@@ -20,31 +20,39 @@ public class Service {
 	@ManyToOne
 	private TravelPackage travelPackage;
 	
+	
 	public int getServiceId() {
 		return serviceId;
+	}
+	public void setServiceId(int serviceId) {
+		this.serviceId = serviceId;
 	}
 	public String getServiceName() {
 		return serviceName;
 	}
-	public String getDescription() {
-		return description;
-	}
-	public List<Image> getImages() {
-		return images;
-	}
-	
-	public void setServiceId(int serviceId) {
-		this.serviceId = serviceId;
-	}
 	public void setServiceName(String serviceName) {
 		this.serviceName = serviceName;
+	}
+	public String getDescription() {
+		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public List<Image> getImages() {
+		return images;
+	}
 	public void setImages(List<Image> images) {
 		this.images = images;
 	}
+	public TravelPackage getTravelPackage() {
+		return travelPackage;
+	}
+	public void setTravelPackage(TravelPackage travelPackage) {
+		this.travelPackage = travelPackage;
+	}
+	
+	
 	
 	
 	

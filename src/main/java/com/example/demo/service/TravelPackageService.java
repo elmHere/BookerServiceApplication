@@ -9,14 +9,18 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.TravelPackage;
 import com.example.demo.repo.TravelPackageRepository;
 
-@Service
 public class TravelPackageService {
 	
 	private TravelPackageRepository travelPackageRepository;
+	private ServiceService serviceService;
+	private ImageService imageService;
 	
-	public TravelPackageService(TravelPackageRepository travelPackageRepository) {
+	public TravelPackageService(TravelPackageRepository travelPackageRepository, ServiceService serviceService
+			,ImageService imageService) {
 		super();
 		this.travelPackageRepository = travelPackageRepository;
+		this.serviceService = serviceService;
+		this.imageService = imageService;
 	}
 
 	@Transactional
@@ -29,10 +33,10 @@ public class TravelPackageService {
 		return travelPackageRepository.findById(travelPackageId).get();
 	}
 	
-	/// save A LIST!!!!
+
 	@Transactional
-	public TravelPackage saveTravelPackage(TravelPackage travelPackage) {
-		return travelPackageRepository.save(travelPackage);
+	public List<TravelPackage> saveTravelPackage(List<TravelPackage> travelPackage) {
+		return (List<TravelPackage>) travelPackageRepository.saveAll(travelPackage);
 	}
 	
 	/// deletes a list of travel packages

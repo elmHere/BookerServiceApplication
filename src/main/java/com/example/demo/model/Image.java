@@ -17,26 +17,39 @@ public class Image {
 	private Service service;
 	@ManyToOne
 	private TravelPackage travelPackage;
-
-	int getImageId() {
+	
+	
+	public int getImageId() {
 		return imageId;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public String getImageUrl() {
-		return imageUrl;
 	}
 	public void setImageId(int imageId) {
 		this.imageId = imageId;
 	}
+	public String getDescription() {
+		return description;
+	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getImageUrl() {
+		return imageUrl;
 	}
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	
+	public Service getService() {
+		return service;
+	}
+	public void setService(Service service) {
+		this.service = service;
+	}
+	public TravelPackage getTravelPackage() {
+		return travelPackage;
+	}
+	public void setTravelPackage(TravelPackage travelPackage) {
+		this.travelPackage = travelPackage;
+	}
+
 	
 	
 	

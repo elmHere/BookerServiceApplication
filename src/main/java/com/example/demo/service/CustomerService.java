@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.Customer;
 import com.example.demo.repo.CustomerRepository;
 
-@Service
 public class CustomerService {
 	
 	private CustomerRepository customerRepository;

@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Service {
 	@Id
@@ -18,6 +20,7 @@ public class Service {
 	@OneToMany(mappedBy = "service")
 	private List<Image> images;
 	@ManyToOne
+	@JsonIgnore
 	private TravelPackage travelPackage;
 	
 	

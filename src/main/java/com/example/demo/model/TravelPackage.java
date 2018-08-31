@@ -13,13 +13,12 @@ public class TravelPackage {
 	@Id
 	@GeneratedValue
 	private int travelPackageId;
-	private int packageName;
+	private String packageName;
 	@OneToMany(mappedBy = "travelPackage")
 	private List<Service> availableServiceList;
 	@OneToMany(mappedBy = "travelPackage") 
 	private List<Image> images;
 	private String description;
-	
 	
 	
 	public int getTravelPackageId() {
@@ -28,10 +27,10 @@ public class TravelPackage {
 	public void setTravelPackageId(int travelPackageId) {
 		this.travelPackageId = travelPackageId;
 	}
-	public int getPackageName() {
+	public String getPackageName() {
 		return packageName;
 	}
-	public void setPackageName(int packageName) {
+	public void setPackageName(String packageName) {
 		this.packageName = packageName;
 	}
 	public List<Service> getAvailableServiceList() {
@@ -52,6 +51,10 @@ public class TravelPackage {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	
+	
+	
 	
 	
 	

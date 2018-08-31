@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.example.demo.repo.CustomerRepository;
+import com.example.demo.repo.ImageRepository;
+import com.example.demo.repo.ServiceRepository;
 import com.example.demo.repo.TravelPackageRepository;
 import com.example.demo.service.CustomerService;
 import com.example.demo.service.ImageService;
@@ -24,5 +26,15 @@ public class BookerServiceConfig {
 			ServiceService serviceService, ImageService imageService) {
 		return new TravelPackageService(travelPackageRepository, serviceService, imageService);
 	}
+	
+	@Bean
+	public ImageService imageService(ImageRepository imagesRepository) {
+		return new ImageService(imagesRepository);
+	}
 
+	@Bean
+	public ServiceService serviceService(ServiceRepository serviceRepository) {
+		return new ServiceService(serviceRepository);
+	}
+	
 }

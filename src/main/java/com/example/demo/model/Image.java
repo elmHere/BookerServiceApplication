@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Image {
 	
@@ -14,8 +16,10 @@ public class Image {
 	private String description;
 	private String imageUrl;
 	@ManyToOne
+	@JsonIgnore
 	private Service service;
 	@ManyToOne
+	@JsonIgnore
 	private TravelPackage travelPackage;
 	
 	

@@ -1,11 +1,13 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Customer;
 import com.example.demo.model.Image;
 import com.example.demo.model.TravelPackage;
 import com.example.demo.repo.TravelPackageRepository;
@@ -35,7 +37,7 @@ public class TravelPackageService {
 	}
 	
 
-	//@Transactional
+	@Transactional
 	public List<TravelPackage> saveTravelPackage(List<TravelPackage> travelPackages) {
 		//save the list of travel packages to table so that they get assigned a unique id
 		List<TravelPackage> travelPacks = (List<TravelPackage>) travelPackageRepository.saveAll(travelPackages);
@@ -73,7 +75,7 @@ public class TravelPackageService {
 		}
 	}
 	
-	
+
 	
 	
 }

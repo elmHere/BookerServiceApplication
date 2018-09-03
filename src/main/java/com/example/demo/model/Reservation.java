@@ -3,8 +3,14 @@ package com.example.demo.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+
 public class Reservation {
-	
+
 	private int reservationId;
 	private List<Service> availedServiceList;
 	private Date departureDate;

@@ -5,10 +5,12 @@ import org.springframework.context.annotation.Configuration;
 
 import com.example.demo.repo.CustomerRepository;
 import com.example.demo.repo.ImageRepository;
+
 import com.example.demo.repo.ServiceRepository;
 import com.example.demo.repo.TravelPackageRepository;
 import com.example.demo.service.CustomerService;
 import com.example.demo.service.ImageService;
+
 import com.example.demo.service.ServiceService;
 import com.example.demo.service.TravelPackageService;
 
@@ -36,5 +38,5 @@ public class BookerServiceConfig {
 	public ServiceService serviceService(ServiceRepository serviceRepository) {
 		return new ServiceService(serviceRepository);
 	}
-	
+		
 }

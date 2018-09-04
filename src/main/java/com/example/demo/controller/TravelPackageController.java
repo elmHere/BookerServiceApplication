@@ -17,7 +17,7 @@ import com.example.demo.model.TravelPackage;
 import com.example.demo.service.TravelPackageService;
 
 @RestController
-@RequestMapping("/travel-package")
+@RequestMapping("/travel-packages")
 public class TravelPackageController {
 	
 	private TravelPackageService travelPackageService;
@@ -34,16 +34,16 @@ public class TravelPackageController {
 	}
 	
 	@PutMapping("/{travelPackageId}")
-	public TravelPackage updateTravelPackage (@PathVariable("travelPackageId") int travelPackageId, @RequestBody TravelPackage travelPackage) {
+	public TravelPackage updateTravelPackage(@PathVariable("travelPackageId") int travelPackageId, @RequestBody TravelPackage travelPackage) {
 		travelPackage.setTravelPackageId(travelPackageId);
 		return travelPackageService.saveTravelPackage(travelPackage);
 		
 	}
 
-	@DeleteMapping
-	public Integer deleteTravelPackages(@RequestParam (value = "id", required = false) Integer id){
-		travelPackageService.deleteTravelPackage(id);
-		return id;	
+	@DeleteMapping("/{travelPackageId}")
+	public Integer deleteTravelPackage(@PathVariable("travelPackageId") int travelPackageId){
+		travelPackageService.deleteTravelPackage(travelPackageId);
+		return travelPackageId;	
 	}
 	
 	

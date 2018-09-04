@@ -5,9 +5,11 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,10 +39,23 @@ public class TravelPackageServiceController {
 	
 	@Transactional
 	@PostMapping
-	public List<com.example.demo.model.Service> updateServices(@PathVariable("travelPackageId") int id, @RequestBody List<com.example.demo.model.Service> services){
+	public List<com.example.demo.model.Service> saveServices(@PathVariable("travelPackageId") int id, @RequestBody List<com.example.demo.model.Service> services){
 		TravelPackage travelPack = travelPackageRepository.findById(id).get();
 		travelPack.getAvailableServiceList().addAll(services);
 		return travelPackageRepository.save(travelPack).getAvailableServiceList();	
+	}
+	
+	@Transactional
+	@PutMapping
+	public List<com.example.demo.model.Service> updateServices(@PathVariable("travelPackageId") int id, @RequestBody List<com.example.demo.model.Service> services){
+		return (List<com.example.demo.model.Service>) serviceRepository.saveAll(services);	
+	}
+	
+	@Transactional
+	@DeleteMapping 
+	public List<com.example.demo.model.Service> deleteService (@PathVariable("travelPackageId") int packId, @PathVariable("ServiceId") int serviceId) {
+		serviceRepository.deleteById(serviceId);
+		return travelPackageRepository.findById(packId).get().getAvailableServiceList();
 	}
 
 }

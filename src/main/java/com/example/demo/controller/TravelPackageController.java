@@ -1,8 +1,16 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.TravelPackage;
@@ -25,9 +33,19 @@ public class TravelPackageController {
 		
 	}
 	
-//	@PutMapping("/{travelPackageId}")
-//	public TravelPackage
-//	
-//	
-//	
+	@PutMapping("/{travelPackageId}")
+	public TravelPackage updateTravelPackage (@PathVariable("travelPackageId") int travelPackageId, @RequestBody TravelPackage travelPackage) {
+		travelPackage.setTravelPackageId(travelPackageId);
+		return travelPackageService.saveTravelPackage(travelPackage);
+		
+	}
+
+	@DeleteMapping
+	public Integer deleteTravelPackages(@RequestParam (value = "id", required = false) Integer id){
+		travelPackageService.deleteTravelPackage(id);
+		return id;	
+	}
+	
+	
+	
 }

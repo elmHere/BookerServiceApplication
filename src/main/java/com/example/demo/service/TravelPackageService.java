@@ -26,6 +26,9 @@ public class TravelPackageService {
 		this.imageService = imageService;
 	}
 
+	
+/// for list of travel packages	
+
 	@Transactional
 	public List<TravelPackage> findAll() {
 		return (List<TravelPackage>) travelPackageRepository.findAll();
@@ -74,8 +77,34 @@ public class TravelPackageService {
 			travelPackageRepository.deleteById(travelPackId);
 		}
 	}
-	
 
+	
+/// for single travel package	
+	
+	@Transactional
+	public TravelPackage saveTravelPackage(TravelPackage travelPackages) {
+		travelPackageRepository.save(travelPackages);
+			for(Image image : travelPackages.getImages()) {
+				image.setTravelPackage(travelPackages);
+				imageService.save(image);	
+			}		
+			for(com.example.demo.model.Service service : travelPackages.getAvailableServiceList()) {
+				service.setTravelPackage(travelPackages);
+				serviceService.save(service);
+				for(Image image1: service.getImages()) {
+					image1.setService(service);
+					image1.setTravelPackage(travelPackages);
+					imageService.save(image1);
+				}
+			}
+		return travelPackages;
+	}
+	
+	@Transactional
+	public void deleteTravelPackage(Integer travelPackageId) {
+			travelPackageRepository.deleteById(travelPackageId);
+	}	
+	
 	
 	
 }

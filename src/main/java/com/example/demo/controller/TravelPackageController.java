@@ -17,7 +17,7 @@ import com.example.demo.model.TravelPackage;
 import com.example.demo.service.TravelPackageService;
 
 @RestController
-@RequestMapping("/travel-packages")
+@RequestMapping("/travel-package")
 public class TravelPackageController {
 	
 	private TravelPackageService travelPackageService;
